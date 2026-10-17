@@ -5,8 +5,11 @@ export const config = { runtime: "edge" };
 
 export default async function handler() {
   const env = process.env;
+  // Acepta tanto los nombres estándar como los que quedaron puestos en Vercel.
+  const url = env.SUPABASE_URL || env.ProjectURL || "";
+  const anonKey = env.SUPABASE_ANON_KEY || env.anonpublic || "";
   return new Response(
-    JSON.stringify({ url: env.SUPABASE_URL || "", anonKey: env.SUPABASE_ANON_KEY || "" }),
+    JSON.stringify({ url, anonKey }),
     { headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } }
   );
 }

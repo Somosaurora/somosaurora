@@ -14,12 +14,14 @@
   button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 16px;font-weight:700}
   .btn{background:linear-gradient(135deg,var(--orange),#ff8a18);color:#fff}
   .btn.ghost{background:#fff;border:1.5px solid var(--line);color:var(--blue)}
+  .btn.ghost:hover{border-color:var(--blue2);color:var(--blue2)}
   .btn.blue{background:var(--blue)}.btn.red{background:var(--red)}.btn.green{background:var(--green)}
+  .btn.sm{padding:8px 13px;font-size:13px;border-radius:9px}
   button:disabled{opacity:.55;cursor:not-allowed}
-  input,select,textarea{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink);width:100%}
-  .wrap{max-width:1280px;margin:auto;padding:18px}
+  input,select,textarea{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);width:100%}
+  .wrap{max-width:1760px;margin:auto;padding:28px 32px 40px}
   header.bar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-  .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 32px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--blue);font-family:Montserrat}
   .brand .dot{width:12px;height:12px;border-radius:3px;background:var(--orange)}
   /* login */
@@ -27,30 +29,123 @@
   .login h1{font-size:24px;color:var(--blue);margin-bottom:6px}.login p{color:var(--muted);margin:0 0 18px;font-size:14px}
   .field{margin-bottom:14px}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
   .msg{font-size:13px;margin-top:10px;min-height:18px}.msg.err{color:var(--red)}.msg.ok{color:var(--green)}
-  /* cards */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
-  .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
-  .stat .n{font:900 28px/1 Montserrat;color:var(--blue)}.stat .l{color:var(--muted);font-size:13px;margin-top:4px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:16px 0}
-  .panel h2{font-size:18px;color:var(--blue);margin-bottom:12px}
-  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:12px}
-  .toolbar .f{min-width:150px;flex:1}
-  .toolbar .f label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:4px}
-  /* table */
-  .tablebox{overflow:auto;border:1px solid var(--line);border-radius:12px;max-height:60vh}
-  table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
-  th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-  th{position:sticky;top:0;background:#eef4fb;color:var(--blue);font-weight:800;z-index:1;cursor:pointer}
-  td.detalle{white-space:normal;max-width:360px}
-  tr:hover td{background:#fafcff}
-  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700}
+  /* tarjetas y paneles */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin:0 0 26px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+  .stat .n{font:900 30px/1 Montserrat;color:var(--blue)}.stat .l{color:var(--muted);font-size:13.5px;margin-top:8px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px;margin:0 0 26px}
+  .panel h2{font-size:21px;color:var(--blue);margin-bottom:6px}
+  .panel .sub{margin:0 0 22px;color:var(--muted);font-size:14px;line-height:1.5}
+  .toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:end;margin-bottom:18px}
+  .toolbar .f{min-width:160px;flex:1}
+  .toolbar .f label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px}
+  .toolbar input,.toolbar select{height:44px}
+  .toolbar .acts{display:flex;gap:10px}.toolbar .acts button{height:44px}
+  /* hoja tipo Excel */
+  .tablebox{overflow:auto;border:1px solid #cdd9e7;border-radius:12px;max-height:calc(100vh - 250px);min-height:300px;background:#fff;outline:0}
+  .tablebox:focus-visible{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(11,101,199,.14)}
+  .tablebox.compact{max-height:none;min-height:0}
+  table.xl{border-collapse:separate;border-spacing:0;width:100%;min-width:2112px;table-layout:fixed;font-size:14px;color:var(--ink)}
+  table.xl.xl-pick{min-width:1100px}
+  .xl th,.xl td{height:50px;padding:0 16px;border-right:1px solid #e4ecf5;border-bottom:1px solid #e4ecf5;text-align:left;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .xl th:last-child,.xl td:last-child{border-right:0}
+  .xl th{position:sticky;top:0;z-index:3;height:46px;background:#eaf1f9;color:var(--blue);font:800 12px/1 'DM Sans';letter-spacing:.05em;text-transform:uppercase;cursor:pointer;user-select:none;border-bottom:1px solid #cdd9e7}
+  .xl th:not([data-k]){cursor:default}
+  .xl th[data-k]:hover{background:#dde9f6}
+  .xl th .srt{display:inline-block;margin-left:6px;font-size:9px;font-style:normal;color:var(--orange)}
+  .xl tbody tr:nth-child(even) td{background:#fafcff}
+  .xl tbody tr{scroll-margin-top:46px}
+  .xl tbody tr:hover td{background:#f0f6fe}
+  .xl tbody tr.picked td{background:#fff6ee}
+  .xl tbody tr.sel td{background:#e6f0fd;box-shadow:inset 0 1px 0 var(--blue2),inset 0 -1px 0 var(--blue2)}
+  .xl tbody tr.sel td:first-child{box-shadow:inset 0 1px 0 var(--blue2),inset 0 -1px 0 var(--blue2),inset 3px 0 0 var(--blue2)}
+  /* columnas fijas (como "inmovilizar paneles") */
+  .xl .c-star,.xl .c-n{position:sticky;z-index:2;padding:0;text-align:center}
+  .xl .c-star{left:0}.xl .c-n{left:56px;border-right:2px solid #cdd9e7;color:#7a8ba3;font-size:12px;background:#f1f5fa}
+  .xl thead .c-star,.xl thead .c-n{z-index:4;top:0}
+  .xl tbody tr .c-n,.xl tbody tr:nth-child(even) .c-n,.xl tbody tr:hover .c-n,.xl tbody tr.picked .c-n,.xl tbody tr.sel .c-n{background:#f1f5fa}
+  .xl tbody tr.sel .c-n{background:#dbe8f9}
+  .xl td.detalle{color:#233a5c}
+  .dt{display:flex;align-items:center;gap:12px;min-width:0}
+  .dt>span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .open{flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border-radius:8px;background:#fff;border:1.5px solid var(--line);color:var(--blue2);opacity:0;transition:opacity .15s ease}
+  .open svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .xl tr:hover .open,.xl tr.sel .open,.open:focus-visible{opacity:1}
+  @media(hover:none){.open{opacity:1}}
+  .xl .yes{color:var(--green);font-weight:700}
+  .b-gest{background:#e8eefc;color:#2a4db3}
+  .xl .due{color:var(--red);font-weight:700}.xl .soon{color:#b45309;font-weight:700}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
   .b-prop{background:#fff1e6;color:#c45500}.b-queja{background:#e7f1ff;color:#0d79ef}.b-otro{background:#e9f9ea;color:#0a7d1c}
   .muted{color:var(--muted)}.right{text-align:right}
-  .top-row{display:grid;grid-template-columns:40px 1fr 200px 90px;gap:10px;align-items:start;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
-  .top-row textarea{min-height:60px;resize:vertical}
   .hidden{display:none}
-  .danger{background:#fff4f3;border:1px solid #f3c6c2;border-radius:12px;padding:14px;margin-top:10px}
-  @media(max-width:640px){.top-row{grid-template-columns:1fr}}
+  .ret{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:6px 0 16px;font-size:14px;line-height:1.55}
+  .ret-st{margin:0;font-size:13.5px;color:var(--muted)}.ret-st.bad{color:var(--red);font-weight:600}.ret-st b{color:var(--ink)}
+  .danger{background:#fff4f3;border:1px solid #f3c6c2;border-radius:14px;padding:20px 22px;margin-top:6px}
+  /* destacar en la web (carrusel semanal) */
+  .pick{position:relative;display:inline-grid;place-items:center;width:32px;height:32px;border-radius:9px;border:1.5px solid var(--line);background:#fff;color:#c3cedb;font-size:17px;line-height:1;cursor:pointer;vertical-align:middle}
+  .pick input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer}
+  .pick.on{background:#fff4ec;border-color:var(--orange);color:var(--orange)}
+  .pick.off{opacity:.35}.pick.off input{cursor:not-allowed}
+  .pick:focus-within{outline:2px solid var(--blue2);outline-offset:2px}
+  .pill{display:inline-block;margin-left:10px;padding:4px 12px;border-radius:999px;background:#eef4fb;color:var(--blue);font:800 12px/1.2 'DM Sans';vertical-align:middle}
+  .pill.full{background:#e9f9ea;color:#0a7d1c}
+  .live-now{border:1px dashed #c9d7e6;border-radius:14px;padding:16px 20px;font-size:13.5px;color:var(--muted);margin:0 0 20px;line-height:1.5}
+  .live-now ol{margin:8px 0 0;padding-left:20px;color:var(--ink)}.live-now li{margin:6px 0}
+  .picks-bar{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 26px}
+  .sec-h{font:800 15px/1.3 'Montserrat';color:var(--blue);margin:0 0 6px}
+  .empty{margin:0;padding:26px 22px;border:1px dashed #c9d7e6;border-radius:14px;color:var(--muted);font-size:14px;text-align:center}
+  /* tabla de elegidas */
+  .xl-pick td,.xl-pick th{height:56px}.xl-pick th{height:46px}
+  .ord{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#eef4fb;color:var(--blue);font:800 13px/1 'Montserrat';margin-right:10px;vertical-align:middle}
+  .mv{width:30px;height:30px;padding:0;border-radius:8px;background:#fff;border:1.5px solid var(--line);color:var(--blue);font-size:15px;font-weight:700;vertical-align:middle;margin-right:4px}
+  .mv:hover:not(:disabled){border-color:var(--blue2);color:var(--blue2)}
+  .xl input.cell{height:38px;border:1.5px solid transparent;background:transparent;padding:0 10px;border-radius:8px;text-overflow:ellipsis}
+  .xl input.cell:hover{border-color:var(--line);background:#fff}.xl input.cell:focus{border-color:var(--blue2);background:#fff;outline:0}
+  .xl .c-act{display:flex;align-items:center;gap:8px}
+  /* ventanas flotantes: leer una opinión completa (se pueden abrir varias) */
+  .win{position:fixed;z-index:60;display:flex;flex-direction:column;min-width:320px;min-height:230px;max-width:calc(100vw - 16px);max-height:calc(100vh - 72px);background:#fff;border:1px solid #c5d4e5;border-radius:14px;box-shadow:0 14px 34px rgba(12,42,82,.18);overflow:hidden;resize:both;outline:0}
+  .win.focus{border-color:#8db4e6;box-shadow:0 26px 64px rgba(12,42,82,.32)}
+  .win.min{display:none}
+  .win.max{left:8px!important;top:8px!important;width:calc(100vw - 16px)!important;height:calc(100vh - 76px)!important;resize:none;border-radius:12px}
+  .win-bar{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;background:#f3f7fc;border-bottom:1px solid #dbe6f2;cursor:grab;user-select:none;touch-action:none}
+  .win.focus .win-bar{background:linear-gradient(180deg,#eaf2fc,#dfeaf8)}
+  .win.drag{user-select:none}.win.drag .win-bar{cursor:grabbing}
+  .win.max .win-bar{cursor:default}
+  .win-dot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--green)}
+  .win-dot.prop{background:var(--orange)}.win-dot.queja{background:#0d79ef}
+  .win-title{min-width:0;flex:1;line-height:1.25}
+  .win-title b{display:block;font:800 14px/1.25 'Montserrat';color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .win-title span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .win-btns{display:flex;gap:2px;flex:none}
+  .wbtn{display:grid;place-items:center;width:34px;height:34px;padding:0;border-radius:9px;background:transparent;color:#47617f}
+  .wbtn:hover{background:rgba(7,60,120,.1);color:var(--blue)}.wbtn.x:hover{background:#fde8e6;color:var(--red)}
+  .wbtn:focus-visible{outline:2px solid var(--blue2);outline-offset:1px}
+  .wbtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .win-body{flex:1;min-height:0;display:flex;flex-direction:column}
+  .win-scroll{flex:1;min-height:0;overflow:auto;padding:22px 24px}
+  .win-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 18px;border-top:1px solid #dbe6f2;background:#f8fbff}
+  .kv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px;margin:0 0 20px}
+  .kv>span{display:block;font:700 11px/1 'DM Sans';letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .kv b{font-weight:600;font-size:14.5px;overflow-wrap:anywhere}.kv.wide{grid-column:1/-1}
+  .op-text{font-size:16.5px;line-height:1.7;color:#1c3558;white-space:pre-wrap;overflow-wrap:anywhere;padding:18px 20px;background:#f7fafe;border:1px solid #e1eaf4;border-radius:12px;margin:0 0 22px}
+  .win label.lbl{display:block;font-weight:700;font-size:13px;color:var(--blue);margin:0 0 8px}
+  .win textarea.big{min-height:170px;font-size:16px;line-height:1.6;resize:vertical}
+  .win .hint{font-size:12.5px;color:var(--muted);margin:8px 0 20px;line-height:1.45}
+  .btn.on{background:#fff4ec;border-color:var(--orange);color:var(--orange)}
+  /* barra de ventanas abiertas */
+  .dock{position:fixed;left:14px;bottom:14px;z-index:8000;display:flex;align-items:center;gap:8px;max-width:calc(100vw - 28px);overflow-x:auto;padding:8px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border:1px solid #cdd9e7;border-radius:14px;box-shadow:0 10px 30px rgba(12,42,82,.16)}
+  .dock[hidden]{display:none}
+  .dchip{display:inline-flex;align-items:center;gap:8px;max-width:230px;flex:none;padding:8px 13px;border-radius:9px;background:#fff;border:1.5px solid var(--line);color:var(--blue);font-size:13px;font-weight:700;white-space:nowrap}
+  .dchip .t{overflow:hidden;text-overflow:ellipsis}
+  .dchip.on{border-color:var(--blue2);background:#eef5ff}
+  .dchip.is-min{opacity:.72;border-style:dashed}
+  .dchip.all{background:transparent;border-color:transparent;color:var(--muted);font-weight:600}
+  body.has-dock .wrap{padding-bottom:96px}
+  #toast{z-index:9000}
+  @media (prefers-reduced-motion:no-preference){.win{animation:winIn .18s cubic-bezier(.16,1,.3,1)}}
+  @keyframes winIn{from{opacity:0;transform:scale(.97) translateY(6px)}to{opacity:1;transform:none}}
+  @media(max-width:700px){.wrap{padding:18px 14px 28px}.bar .wrap{padding:12px 14px}.panel{padding:20px 16px}.kv-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -76,7 +171,7 @@
   <header class="bar">
     <div class="wrap">
       <div class="brand"><span class="dot"></span> Somos Aurora · Panel</div>
-      <div style="display:flex;gap:8px;align-items:center">
+      <div style="display:flex;gap:10px;align-items:center">
         <span id="whoami" class="muted" style="font-size:13px"></span>
         <button id="logoutBtn" class="btn ghost">Salir</button>
       </div>
@@ -94,62 +189,76 @@
     <!-- OPINIONES -->
     <div class="panel">
       <h2>Opiniones recibidas</h2>
+      <p class="sub"><b>Doble clic</b> en una fila para leer la opinión completa en su propia ventana; puedes abrir varias, moverlas, cambiarles el tamaño, minimizarlas o maximizarlas. Con el teclado: flechas para moverte y Enter para abrir.</p>
       <div class="toolbar">
-        <div class="f"><label>Buscar</label><input id="fSearch" type="search" placeholder="texto, nombre, referencia…"></div>
-        <div class="f"><label>Tipo</label><select id="fTipo"><option value="">Todos</option><option>Propuesta</option><option>Queja o problema</option><option>Otro tema</option></select></div>
-        <div class="f"><label>Tema</label><select id="fTema"><option value="">Todos</option></select></div>
-        <div class="f"><label>Sector</label><select id="fSector"><option value="">Todos</option></select></div>
-        <div class="f"><label>Desde</label><input id="fFrom" type="date"></div>
-        <div class="f"><label>Hasta</label><input id="fTo" type="date"></div>
-        <div style="display:flex;gap:8px">
+        <div class="f" style="flex:1 1 320px"><label for="fSearch">Buscar</label><input id="fSearch" type="search" placeholder="texto, nombre, referencia…"></div>
+        <div class="acts">
           <button id="reloadBtn" class="btn blue">Recargar</button>
           <button id="csvBtn" class="btn ghost">Exportar CSV</button>
         </div>
       </div>
-      <div class="tablebox">
-        <table id="tbl">
+      <div class="toolbar">
+        <div class="f"><label for="fTipo">Tipo</label><select id="fTipo"><option value="">Todos</option><option>Propuesta</option><option>Queja o problema</option><option>Otro tema</option></select></div>
+        <div class="f"><label for="fTema">Tema</label><select id="fTema"><option value="">Todos</option></select></div>
+        <div class="f"><label for="fSector">Sector</label><select id="fSector"><option value="">Todos</option></select></div>
+        <div class="f"><label for="fFrom">Desde</label><input id="fFrom" type="date"></div>
+        <div class="f"><label for="fTo">Hasta</label><input id="fTo" type="date"></div>
+      </div>
+      <div class="tablebox" id="tbox" tabindex="0" aria-label="Hoja de opiniones recibidas">
+        <table id="tbl" class="xl">
+          <colgroup>
+            <col style="width:56px"><col style="width:60px"><col style="width:192px"><col style="width:176px"><col style="width:214px"><col><col style="width:150px"><col style="width:210px"><col style="width:160px"><col style="width:140px"><col style="width:96px"><col style="width:132px"><col style="width:84px">
+          </colgroup>
           <thead><tr>
-            <th data-k="created_at">Fecha y hora</th>
-            <th data-k="tipo">Tipo</th>
-            <th data-k="tema">Tema</th>
-            <th data-k="sector">Sector</th>
-            <th data-k="referencia">Referencia</th>
-            <th data-k="detalle">Detalle</th>
-            <th data-k="nombre">Nombre</th>
-            <th data-k="celular">Celular</th>
-            <th data-k="consentimiento">Consent.</th>
+            <th class="c-star" title="Destacar en el carrusel de la web">★</th>
+            <th class="c-n">#</th>
+            <th data-k="created_at">Fecha y hora<i class="srt"></i></th>
+            <th data-k="tipo">Tipo<i class="srt"></i></th>
+            <th data-k="tema">Tema<i class="srt"></i></th>
+            <th data-k="detalle">Detalle<i class="srt"></i></th>
+            <th data-k="sector">Sector<i class="srt"></i></th>
+            <th data-k="referencia">Referencia<i class="srt"></i></th>
+            <th data-k="nombre">Nombre<i class="srt"></i></th>
+            <th data-k="celular">Celular<i class="srt"></i></th>
+            <th data-k="consentimiento">Consent.<i class="srt"></i></th>
+            <th title="Las opiniones se borran solas a los 30 días, salvo las marcadas En gestión">Se borra</th>
             <th>Foto</th>
           </tr></thead>
           <tbody id="tbody"></tbody>
         </table>
       </div>
-      <p class="muted" style="font-size:12px;margin-top:8px">Tip: clic en un encabezado para ordenar.</p>
+      <p class="muted" style="font-size:12.5px;margin:12px 0 0">Clic en un encabezado para ordenar. Las columnas ★ y # se quedan fijas al desplazarte a la derecha.</p>
     </div>
 
-    <!-- INFORME SEMANAL -->
+    <!-- OPINIONES DE LA SEMANA EN LA WEB (carrusel) -->
     <div class="panel">
-      <h2>Informe semanal (por frecuencia)</h2>
-      <p class="muted" style="font-size:14px;margin-top:-6px">Usa el rango de fechas de arriba (por defecto, últimos 7 días). Calcula conteos y propone el top; puedes editarlo antes de publicar.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
-        <button id="genBtn" class="btn">Generar informe</button>
-        <button id="publishBtn" class="btn green hidden">Publicar top en la web</button>
+      <h2>Opiniones de la semana en la web <span id="pickCount" class="pill">0/5</span></h2>
+      <p class="sub">Marca con <b style="color:var(--orange)">★</b> hasta 5 opiniones en la hoja de arriba (usa el rango de fechas de la semana). Al publicar, reemplazan a las que hoy se ven en el carrusel de la portada y quedan ahí hasta la próxima publicación.</p>
+      <div id="liveNow" class="live-now">Cargando lo que se ve hoy en la portada…</div>
+      <div class="picks-bar">
+        <button id="genBtn" class="btn ghost">Sugerir por frecuencia</button>
+        <button id="clearPicksBtn" class="btn ghost">Quitar selección</button>
+        <button id="publishBtn" class="btn green" disabled>Publicar en la web</button>
       </div>
-      <div id="reportOut" class="hidden">
-        <div class="grid" id="catCounts"></div>
-        <h3 style="font-size:15px;color:var(--blue);margin:14px 0 8px">Top propuesto (edítalo):</h3>
-        <div id="topList"></div>
-        <div class="field" style="margin-top:12px"><label style="font-weight:700;font-size:13px">Resumen del informe (opcional)</label><textarea id="resumen" rows="2" placeholder="Ej.: Esta semana predominaron los temas de basura y alumbrado…"></textarea></div>
-      </div>
+      <div class="grid hidden" id="catCounts"></div>
+      <h3 class="sec-h">Elegidas para la portada</h3>
+      <p class="muted" style="font-size:13.5px;margin:0 0 14px">Doble clic en una fila para leer y editar el texto público. Usa ↑ ↓ para cambiar el orden en el carrusel.</p>
+      <div id="topList"></div>
+      <div class="field" style="margin:22px 0 0"><label for="resumen" style="font-weight:700;font-size:13px">Resumen del informe (opcional)</label><textarea id="resumen" rows="3" placeholder="Ej.: Esta semana predominaron los temas de basura y alumbrado…"></textarea></div>
     </div>
 
     <!-- ZONA PELIGRO -->
     <div class="panel">
       <h2>Archivar y limpiar</h2>
+      <div class="ret">
+        <p style="margin:0 0 8px"><b>Limpieza automática a los 30 días.</b> Cada noche (02:00, hora de Ecuador) se borran las opiniones recibidas hace más de 30 días, junto con sus fotos. No se tocan los informes ni las opiniones destacadas, ni las que marques <b>En gestión</b> (ábrelas con doble clic).</p>
+        <p class="ret-st" id="retStatus">Consultando…</p>
+      </div>
       <div class="danger">
-        <p style="margin:0 0 8px"><b>Borra las opiniones crudas</b> del rango seleccionado (y sus fotos) para mantener la base liviana. <b>Conserva</b> los informes y el top publicado.</p>
-        <p class="muted" style="font-size:13px;margin:0 0 10px">Primero genera y publica el informe. Esta acción no se puede deshacer.</p>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <input id="confirmText" placeholder='Escribe BORRAR para confirmar' style="max-width:260px">
+        <p style="margin:0 0 6px"><b>Limpieza manual, antes de tiempo.</b> Borra ahora las opiniones del rango seleccionado (y sus fotos). <b>Conserva</b> los informes, el top publicado y las opiniones en gestión.</p>
+        <p class="muted" style="font-size:13px;margin:0 0 14px">Primero genera y publica el informe. Esta acción no se puede deshacer.</p>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <input id="confirmText" placeholder='Escribe BORRAR para confirmar' style="max-width:280px">
           <button id="purgeBtn" class="btn red" disabled>Archivar y limpiar el rango</button>
         </div>
       </div>
@@ -159,18 +268,73 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<!-- ventanas abiertas (minimizadas o no) -->
+<div id="dock" class="dock" hidden aria-label="Ventanas abiertas"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" integrity="sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (function(){
   const $ = (s)=>document.querySelector(s);
   const show = (el)=>el.classList.remove('hidden');
   const hide = (el)=>el.classList.add('hidden');
-  let db=null, rows=[], sortKey='created_at', sortDir=-1, generatedTop=[];
+  let db=null, rows=[], sortKey='created_at', sortDir=-1, picked=[], selId=null;
+  const MAX_PICK=5; // opiniones por semana en el carrusel de la portada
 
-  function toast(msg, ok=true){ const t=$('#toast'); t.textContent=msg; t.style.display='block'; t.style.color= ok?'var(--green)':'var(--red)'; setTimeout(()=>t.style.display='none', 3200); }
+  function toast(msg, ok=true){ const t=$('#toast'); t.textContent=msg; t.style.display='block'; t.style.color= ok?'var(--green)':'var(--red)'; clearTimeout(toast.t); toast.t=setTimeout(()=>t.style.display='none', 3200); }
   function fmtDate(iso){ try{ return new Date(iso).toLocaleString('es-EC',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});}catch{return iso||'';} }
-  function badge(tipo){ const c= tipo==='Propuesta'?'b-prop': tipo==='Queja o problema'?'b-queja':'b-otro'; return `<span class="badge ${c}">${tipo||''}</span>`; }
+  function badge(tipo){ const c= tipo==='Propuesta'?'b-prop': tipo==='Queja o problema'?'b-queja':'b-otro'; return `<span class="badge ${c}">${esc(tipo)}</span>`; }
   function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch])); }
+  const tone=t=>t==='Propuesta'?'prop':t==='Queja o problema'?'queja':'otro';
+  // Retención: las opiniones se borran solas a los 30 días (api/purge.js), salvo las "en gestión".
+  const RETENCION=30;
+  // Prueba del consentimiento (migración 0004): qué versión de la política se aceptó y cuándo.
+  const consentTxt=r=>r.consent_version?`Sí · política ${r.consent_version} · aceptada el ${fmtDate(r.consent_at)}`:'Sí · anterior al registro de versión';
+  let retCol=null; // true/false cuando loadRetention comprobó si existe la columna en_gestion
+  const hasRet=()=>retCol!==null?retCol:(rows.length>0&&'en_gestion' in rows[0]); // false si falta aplicar la migración 0003
+  const diasRestantes=r=>RETENCION-Math.floor((Date.now()-new Date(r.created_at))/864e5);
+  function borraTxt(r){
+    if(!hasRet()) return '<span class="muted">—</span>';
+    if(r.en_gestion) return '<span class="badge b-gest">En gestión</span>';
+    const d=diasRestantes(r);
+    return d<=0?'<span class="due">vence hoy</span>':d<=5?`<span class="soon">en ${d} d</span>`:`en ${d} d`;
+  }
+  const fmtDay2=d=>new Date(d).toLocaleDateString('es-EC',{day:'numeric',month:'short',year:'numeric'});
+  function borraLargo(r){
+    if(r.en_gestion) return 'No se borra sola: en gestión'+(r.en_gestion_desde?' desde el '+fmtDay2(r.en_gestion_desde):'')+'.';
+    const d=diasRestantes(r), cuando=fmtDay2(new Date(r.created_at).getTime()+RETENCION*864e5);
+    return d<=0?'En la próxima limpieza (esta noche).':`Hacia el ${cuando} (en ${d} ${d===1?'día':'días'}).`;
+  }
+  async function setGestion(r,v){
+    if(!v&&diasRestantes(r)<=0&&!confirm('Esta opinión ya pasó los 30 días. Si la quitas de gestión se borrará en la próxima limpieza (esta noche). ¿Continuar?')) return;
+    const patch={ en_gestion:v, en_gestion_desde:v?new Date().toISOString():null };
+    const { error } = await db.from('submissions').update(patch).eq('id',r.id);
+    if(error){ toast(/en_gestion|column/i.test(error.message)?'Falta aplicar la migración 0003 en Supabase.':'No se pudo guardar: '+error.message,false); return; }
+    Object.assign(r,patch); render(); syncWins(); loadRetention();
+    toast(v?'Marcada En gestión: no se borrará sola.':'Quitada de gestión: se borrará a los 30 días de recibida.');
+  }
+  // estado de la limpieza automática (bitácora que escribe api/purge.js)
+  async function loadRetention(){
+    const box=$('#retStatus'); if(!box) return;
+    box.classList.remove('bad');
+    const cnt=await db.from('submissions').select('id',{count:'exact',head:true}).eq('en_gestion',true);
+    const log=await db.from('purga_log').select('ejecutada_en,opiniones,fotos,error').order('ejecutada_en',{ascending:false}).limit(1);
+    const antes=retCol; retCol=!cnt.error; if(antes!==retCol) render();
+    if(cnt.error||log.error){ box.classList.add('bad'); box.textContent='Aún no está activada: falta aplicar la migración 0003 en Supabase (y poner CRON_SECRET en Vercel).'; return; }
+    const g=cnt.count||0, tail=` · ${g} ${g===1?'opinión':'opiniones'} en gestión.`;
+    const last=(log.data||[])[0];
+    if(!last){ box.innerHTML='Todavía no se ha ejecutado ninguna limpieza. Si pasa más de un día, revisa que <b>CRON_SECRET</b> esté en Vercel. Opiniones en gestión: '+g+'.'; return; }
+    const cuando=new Date(last.ejecutada_en).toLocaleString('es-EC',{timeZone:'America/Guayaquil',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    const viejo=Date.now()-new Date(last.ejecutada_en)>36*36e5;
+    if(last.error){ box.classList.add('bad'); box.textContent=`Última limpieza: ${cuando}, con error: ${last.error}`+tail; return; }
+    box.innerHTML=`Última limpieza: <b>${esc(cuando)}</b> — ${last.opiniones} ${last.opiniones===1?'opinión':'opiniones'} y ${last.fotos} ${last.fotos===1?'foto':'fotos'} borradas`+esc(tail)+(viejo?' <span class="due">Hace más de un día que no corre: revisa Vercel → Cron Jobs.</span>':'');
+    if(viejo) box.classList.add('bad');
+  }
+  const dash='<span class="muted">—</span>';
+  const SV=d=>`<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
+  const I_MIN=SV('<path d="M6 12h12"/>'), I_MAX=SV('<rect x="6" y="6" width="12" height="12" rx="1.8"/>'),
+        I_RES=SV('<path d="M9.5 9.5V6.8a.8.8 0 0 1 .8-.8h6.9a.8.8 0 0 1 .8.8v6.9a.8.8 0 0 1-.8.8h-2.7"/><rect x="6" y="9.5" width="8.5" height="8.5" rx="1.8"/>'),
+        I_X=SV('<path d="m7 7 10 10M17 7 7 17"/>'),
+        I_OPEN=SV('<path d="M14 5h5v5"/><path d="m19 5-7 7"/><path d="M18 14v3.2a1.8 1.8 0 0 1-1.8 1.8H6.8A1.8 1.8 0 0 1 5 17.2V7.8A1.8 1.8 0 0 1 6.8 6H10"/>');
 
   // ---- arranque: cargar config ----
   async function boot(){
@@ -196,7 +360,16 @@
 
   $('#logoutBtn').addEventListener('click', async ()=>{ await db.auth.signOut(); location.reload(); });
 
-  function enterApp(session){
+  async function enterApp(session){
+    // Con la migración 0002 aplicada solo entran los correos de la tabla `admins`.
+    // Si la función aún no existe (migración pendiente), no se bloquea el acceso.
+    const { data:isAdmin, error:adminErr } = await db.rpc('is_admin');
+    if(!adminErr && isAdmin===false){
+      await db.auth.signOut();
+      hide($('#appView')); show($('#loginView'));
+      const m=$('#loginMsg'); m.textContent='Esta cuenta no tiene permisos de administrador.'; m.className='msg err';
+      return;
+    }
     $('#whoami').textContent = session?.user?.email || '';
     show($('#appView'));
     // rango por defecto: últimos 7 días
@@ -204,6 +377,8 @@
     $('#fTo').value = to.toISOString().slice(0,10);
     $('#fFrom').value = from.toISOString().slice(0,10);
     loadRows();
+    renderPicks();
+    loadLive(); loadRetention();
   }
 
   // ---- datos ----
@@ -244,18 +419,27 @@
     $('#stProp').textContent=list.filter(r=>r.tipo==='Propuesta').length;
     $('#stQueja').textContent=list.filter(r=>r.tipo==='Queja o problema').length;
     $('#stOtro').textContent=list.filter(r=>r.tipo==='Otro tema').length;
-    $('#tbody').innerHTML = list.map(r=>`<tr>
+    document.querySelectorAll('#tbl th[data-k]').forEach(th=>{
+      const on=th.dataset.k===sortKey; th.querySelector('.srt').textContent=on?(sortDir===1?'▲':'▼'):'';
+      th.setAttribute('aria-sort',on?(sortDir===1?'ascending':'descending'):'none');
+    });
+    const full = picked.length>=MAX_PICK;
+    $('#tbody').innerHTML = list.map((r,i)=>{ const id=String(r.id), on=isPicked(id); return `<tr data-id="${esc(id)}" class="${on?'picked':''}${id===selId?' sel':''}">
+      <td class="c-star"><label class="pick ${on?'on':full?'off':''}" title="${on?'Quitar de la web':full?'Ya elegiste 5':'Destacar en la web'}"><input type="checkbox" data-pick="${esc(id)}" ${on?'checked':''} ${!on&&full?'disabled':''} aria-label="Destacar en la web"><span aria-hidden="true">★</span></label></td>
+      <td class="c-n">${i+1}</td>
       <td>${fmtDate(r.created_at)}</td>
       <td>${badge(r.tipo)}</td>
-      <td>${esc(r.tema)}</td>
-      <td>${esc(r.sector)||'<span class="muted">—</span>'}</td>
-      <td>${esc(r.referencia)||'<span class="muted">—</span>'}</td>
-      <td class="detalle">${esc(r.detalle)}</td>
-      <td>${esc(r.nombre)||'<span class="muted">—</span>'}</td>
-      <td>${esc(r.celular)||'<span class="muted">—</span>'}</td>
-      <td>${r.consentimiento?'✅':'—'}</td>
-      <td>${r.evidencia_path?`<a href="#" data-foto="${esc(r.evidencia_path)}">ver</a>`:'<span class="muted">—</span>'}</td>
-    </tr>`).join('') || `<tr><td colspan="10" class="muted" style="padding:20px">Sin opiniones en este filtro.</td></tr>`;
+      <td title="${esc(r.tema)}">${esc(r.tema)}</td>
+      <td class="detalle" title="Doble clic para leer completa"><div class="dt"><span>${esc(r.detalle)}</span><button class="open" type="button" aria-label="Abrir opinión completa" title="Abrir en ventana">${I_OPEN}</button></div></td>
+      <td title="${esc(r.sector)}">${esc(r.sector)||dash}</td>
+      <td title="${esc(r.referencia)}">${esc(r.referencia)||dash}</td>
+      <td title="${esc(r.nombre)}">${esc(r.nombre)||dash}</td>
+      <td>${esc(r.celular)||dash}</td>
+      <td>${r.consentimiento?`<span class="yes" title="${esc(consentTxt(r))}">Sí</span>`:dash}</td>
+      <td>${borraTxt(r)}</td>
+      <td>${r.evidencia_path?`<a href="#" data-foto="${esc(r.evidencia_path)}">ver</a>`:dash}</td>
+    </tr>`; }).join('') || `<tr><td colspan="13" class="muted" style="height:90px;padding:0 24px">Sin opiniones en este filtro.</td></tr>`;
+    syncWins();
   }
 
   // ordenar por encabezado
@@ -266,80 +450,293 @@
   $('#reloadBtn').addEventListener('click',loadRows);
 
   // ver foto (signed url)
-  $('#tbody').addEventListener('click', async e=>{
-    const a=e.target.closest('[data-foto]'); if(!a) return; e.preventDefault();
-    const { data, error } = await db.storage.from('evidencias').createSignedUrl(a.dataset.foto, 120);
+  async function openFoto(path){
+    const { data, error } = await db.storage.from('evidencias').createSignedUrl(path, 120);
     if(error){ toast('No se pudo abrir la foto',false); return; }
     window.open(data.signedUrl,'_blank','noopener');
+  }
+
+  // selección de fila (como una celda activa en Excel)
+  function selectRow(id,scroll){
+    selId=String(id);
+    document.querySelectorAll('#tbody tr.sel').forEach(t=>t.classList.remove('sel'));
+    const tr=[...document.querySelectorAll('#tbody tr[data-id]')].find(t=>t.dataset.id===selId);
+    if(tr){ tr.classList.add('sel'); if(scroll) tr.scrollIntoView({block:'nearest'}); }
+  }
+  $('#tbody').addEventListener('click', e=>{
+    const a=e.target.closest('[data-foto]'); if(a){ e.preventDefault(); openFoto(a.dataset.foto); return; }
+    const tr=e.target.closest('tr[data-id]'); if(!tr) return;
+    if(!e.target.closest('.pick')) selectRow(tr.dataset.id);
+    if(e.target.closest('.open')) openOpinion(tr.dataset.id);
+  });
+  $('#tbody').addEventListener('dblclick', e=>{
+    if(e.target.closest('.pick,a,.open')) return;
+    const tr=e.target.closest('tr[data-id]'); if(!tr) return;
+    window.getSelection&&window.getSelection().removeAllRanges();
+    openOpinion(tr.dataset.id);
+  });
+  $('#tbox').addEventListener('keydown', e=>{
+    if(!['ArrowDown','ArrowUp','Home','End','Enter'].includes(e.key)) return;
+    if(e.target!==$('#tbox')) return; // si el foco está en una ★ o un enlace, no se interfiere
+    const trs=[...document.querySelectorAll('#tbody tr[data-id]')]; if(!trs.length) return;
+    e.preventDefault();
+    let i=trs.findIndex(t=>t.dataset.id===selId);
+    if(e.key==='Enter'){ if(i>=0) openOpinion(selId); return; }
+    i = e.key==='ArrowDown' ? Math.min(trs.length-1,i+1) : e.key==='ArrowUp' ? Math.max(0,i<0?0:i-1) : e.key==='Home' ? 0 : trs.length-1;
+    selectRow(trs[i].dataset.id,true);
   });
 
   // ---- CSV ----
   $('#csvBtn').addEventListener('click',()=>{
     const list=filtered();
-    const cols=['created_at','tipo','tema','sector','referencia','detalle','nombre','celular','consentimiento','evidencia_path'];
-    const head=['Fecha y hora','Tipo','Tema','Sector','Referencia','Detalle','Nombre','Celular','Consentimiento','Foto'];
-    const cell=v=>{ v=v==null?'':String(v); return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
-    const csv=[head.join(','), ...list.map(r=>cols.map(c=> c==='created_at'?cell(fmtDate(r[c])):cell(r[c])).join(','))].join('\r\n');
+    const cols=['created_at','tipo','tema','sector','referencia','detalle','nombre','celular','consentimiento','consent_version','consent_at','evidencia_path'];
+    const head=['Fecha y hora','Tipo','Tema','Sector','Referencia','Detalle','Nombre','Celular','Consentimiento','Versión de la política','Aceptada el','Foto'];
+    // Un texto que empieza con = + - @ lo ejecutaría Excel como fórmula (cualquiera puede escribirlo en el formulario): se neutraliza con un apóstrofo.
+    // Los teléfonos (solo dígitos, espacios, + y -) no son fórmulas y se dejan como están.
+    const safe=v=>/^[=+\-@\t\r]/.test(v)&&!/^\+?[0-9][0-9\s+-]*$/.test(v)?"'"+v:v;
+    const cell=v=>{ v=safe(v==null?'':String(v)); return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
+    const csv=[head.join(','), ...list.map(r=>cols.map(c=> (c==='created_at'||c==='consent_at')?cell(r[c]?fmtDate(r[c]):''):cell(r[c])).join(','))].join('\r\n');
     const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});
     const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`somos-aurora-opiniones-${new Date().toISOString().slice(0,10)}.csv`; a.click();
   });
 
-  // ---- informe ----
+  // ---- ventanas flotantes (mover, redimensionar, minimizar, maximizar; varias a la vez) ----
+  const wins=new Map(); let zTop=60, cascade=0, curWin=null;
+
+  function openWin(key,cfg){
+    const ex=wins.get(key); if(ex){ if(ex.min) toggleMin(ex,false); focusWin(ex); return ex; }
+    const el=document.createElement('div'); el.className='win'; el.setAttribute('role','dialog'); el.setAttribute('aria-label',cfg.title); el.tabIndex=-1;
+    el.innerHTML=`<div class="win-bar"><span class="win-dot ${cfg.tone||''}"></span>
+      <div class="win-title"><b>${esc(cfg.title)}</b><span>${esc(cfg.sub||'')}</span></div>
+      <div class="win-btns"><button type="button" class="wbtn" data-w="min" aria-label="Minimizar" title="Minimizar">${I_MIN}</button><button type="button" class="wbtn" data-w="max" aria-label="Maximizar" title="Maximizar">${I_MAX}</button><button type="button" class="wbtn x" data-w="close" aria-label="Cerrar" title="Cerrar">${I_X}</button></div></div>
+      <div class="win-body">${cfg.body}<div class="win-foot">${cfg.foot||''}</div></div>`;
+    const vw=innerWidth, vh=innerHeight, w0=Math.min(600,vw-16), h0=Math.min(500,vh-100), off=(cascade++%8)*30;
+    el.style.width=w0+'px'; el.style.height=h0+'px';
+    el.style.left=Math.max(8,Math.min(vw-w0-8,Math.round((vw-w0)/2)-120+off))+'px';
+    el.style.top=Math.max(8,Math.min(vh-h0-64,70+off))+'px';
+    const w={key,el,cfg,min:false,max:false,prev:null};
+    wins.set(key,w); document.body.appendChild(el);
+    // arrastrar por la barra de título
+    const bar=el.querySelector('.win-bar');
+    bar.addEventListener('pointerdown',e=>{
+      if(e.target.closest('.wbtn')||w.max||e.button>0) return;
+      focusWin(w);
+      const r=el.getBoundingClientRect(), dx=e.clientX-r.left, dy=e.clientY-r.top;
+      bar.setPointerCapture(e.pointerId); el.classList.add('drag');
+      const mv=ev=>{ el.style.left=Math.min(Math.max(ev.clientX-dx,120-r.width),innerWidth-120)+'px'; el.style.top=Math.min(Math.max(ev.clientY-dy,0),innerHeight-60)+'px'; };
+      const up=()=>{ bar.removeEventListener('pointermove',mv); bar.removeEventListener('pointerup',up); bar.removeEventListener('pointercancel',up); el.classList.remove('drag'); };
+      bar.addEventListener('pointermove',mv); bar.addEventListener('pointerup',up); bar.addEventListener('pointercancel',up);
+    });
+    bar.addEventListener('dblclick',e=>{ if(!e.target.closest('.wbtn')) toggleMax(w); });
+    el.addEventListener('pointerdown',()=>focusWin(w),true);
+    el.addEventListener('click',e=>{
+      const b=e.target.closest('[data-w]');
+      if(b){ const a=b.dataset.w; if(a==='min') toggleMin(w,true); else if(a==='max') toggleMax(w); else closeWin(w); return; }
+      const act=e.target.closest('[data-act]'); if(act&&cfg.act) cfg.act(act.dataset.act,w);
+    });
+    el.addEventListener('input',e=>{ if(cfg.input) cfg.input(e,w); });
+    focusWin(w); if(cfg.sync) cfg.sync(w); renderDock();
+    return w;
+  }
+  function focusWin(w){
+    curWin=w; w.el.style.zIndex=++zTop;
+    wins.forEach(x=>x.el.classList.toggle('focus',x===w));
+    renderDock();
+  }
+  function toggleMin(w,min){
+    w.min=min; w.el.classList.toggle('min',min);
+    if(min){ if(curWin===w) curWin=null; wins.forEach(x=>x.el.classList.remove('focus')); } else focusWin(w);
+    renderDock();
+  }
+  function toggleMax(w){
+    const el=w.el;
+    if(!w.max){ w.prev={left:el.style.left,top:el.style.top,width:el.style.width,height:el.style.height}; el.classList.add('max'); w.max=true; }
+    else { el.classList.remove('max'); Object.assign(el.style,w.prev); w.max=false; }
+    const b=el.querySelector('[data-w=max]'); b.innerHTML=w.max?I_RES:I_MAX; b.title=b.ariaLabel=w.max?'Restaurar':'Maximizar';
+    focusWin(w);
+  }
+  function closeWin(w){
+    w.el.remove(); wins.delete(w.key); if(curWin===w) curWin=null;
+    renderDock();
+  }
+  function syncWins(){ [...wins.values()].forEach(w=>{ if(w.cfg.sync) w.cfg.sync(w); }); }
+  function renderDock(){
+    const d=$('#dock'); d.hidden=!wins.size; document.body.classList.toggle('has-dock',!!wins.size);
+    d.innerHTML=[...wins.values()].map(w=>`<button type="button" class="dchip ${w===curWin?'on':''} ${w.min?'is-min':''}" data-k="${esc(w.key)}" title="${esc(w.cfg.title)} · ${esc(w.cfg.sub||'')}"><span class="win-dot ${w.cfg.tone||''}"></span><span class="t">${esc(w.cfg.chip||w.cfg.title)}</span></button>`).join('')
+      + (wins.size>1?'<button type="button" class="dchip all" data-all="1">Cerrar todas</button>':'');
+  }
+  $('#dock').addEventListener('click',e=>{
+    if(e.target.closest('[data-all]')){ [...wins.values()].forEach(closeWin); return; }
+    const c=e.target.closest('[data-k]'); if(!c) return; const w=wins.get(c.dataset.k); if(!w) return;
+    if(w.min) toggleMin(w,false); else if(curWin===w) toggleMin(w,true); else focusWin(w);
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&curWin&&!curWin.min) closeWin(curWin); });
+
+  // leer una opinión recibida (solo lectura + destacar)
+  function openOpinion(id){
+    const r=rows.find(x=>String(x.id)===String(id)); if(!r) return;
+    openWin('op:'+r.id,{
+      title:r.tema||'Opinión', sub:`${fmtDate(r.created_at)} · ${r.sector||'sin sector'}`, tone:tone(r.tipo),
+      chip:`${(r.tema||'Opinión')} · ${new Date(r.created_at).toLocaleTimeString('es-EC',{hour:'2-digit',minute:'2-digit'})}`,
+      body:`<div class="win-scroll">
+        <div class="kv-grid">
+          <div class="kv"><span>Fecha</span><b>${esc(fmtDate(r.created_at))}</b></div>
+          <div class="kv"><span>Tipo</span><b>${badge(r.tipo)}</b></div>
+          <div class="kv"><span>Tema</span><b>${esc(r.tema)||'—'}</b></div>
+          <div class="kv"><span>Sector</span><b>${esc(r.sector)||'—'}</b></div>
+          <div class="kv wide"><span>Referencia</span><b>${esc(r.referencia)||'—'}</b></div>
+          ${hasRet()?`<div class="kv wide" data-ret><span>Retención</span><b>${esc(borraLargo(r))}</b></div>`:''}
+        </div>
+        <div class="op-text">${esc(r.detalle)}</div>
+        <div class="kv-grid" style="margin:0">
+          <div class="kv"><span>Nombre</span><b>${esc(r.nombre)||'—'}</b></div>
+          <div class="kv"><span>Celular</span><b>${esc(r.celular)||'—'}</b></div>
+          <div class="kv wide"><span>Consentimiento</span><b>${r.consentimiento?esc(consentTxt(r)):'—'}</b></div>
+        </div></div>`,
+      foot:`<button type="button" class="btn ghost sm" data-act="pick">★ Destacar en la web</button>`+
+           (hasRet()?`<button type="button" class="btn ghost sm" data-act="gest"></button>`:'')+
+           (r.evidencia_path?`<button type="button" class="btn ghost sm" data-act="foto">Ver foto</button>`:'')+
+           `<button type="button" class="btn ghost sm" data-act="copy">Copiar texto</button>`,
+      sync(w){
+        const b=w.el.querySelector('[data-act=pick]'), on=isPicked(r.id); b.textContent=on?'★ Quitar de la web':'★ Destacar en la web'; b.classList.toggle('on',on); b.disabled=!on&&picked.length>=MAX_PICK;
+        const g=w.el.querySelector('[data-act=gest]'); if(g){ g.textContent=r.en_gestion?'Quitar de gestión':'Mantener en gestión'; g.classList.toggle('on',!!r.en_gestion); }
+        const k=w.el.querySelector('[data-ret] b'); if(k) k.textContent=borraLargo(r);
+      },
+      act(name){
+        if(name==='pick') togglePick(r.id);
+        else if(name==='gest') setGestion(r,!r.en_gestion);
+        else if(name==='foto') openFoto(r.evidencia_path);
+        else if(name==='copy'){ (navigator.clipboard?navigator.clipboard.writeText(r.detalle||''):Promise.reject()).then(()=>toast('Texto copiado.'),()=>toast('No se pudo copiar.',false)); }
+      }
+    });
+  }
+
+  // leer y editar el texto público de una elegida
+  function openPickEditor(id){
+    id=String(id); const t=picked.find(p=>p.id===id); if(!t) return;
+    openWin('pick:'+id,{
+      title:'Texto público', sub:`${t.tipo} · ${t.tema}${t.sector?' · '+t.sector:''}`, tone:tone(t.tipo), chip:'Editar · '+(t.tema||'opinión'),
+      body:`<div class="win-scroll">
+        <label class="lbl" for="pe-${esc(id)}">Texto que verá la gente en la portada</label>
+        <textarea id="pe-${esc(id)}" class="big" data-f="texto">${esc(t.texto)}</textarea>
+        <div class="hint">Revisa que no incluya nombres, placas ni números de casa. Los cambios se guardan al escribir.</div>
+        <label class="lbl" for="pa-${esc(id)}">Etiqueta pública</label>
+        <input id="pa-${esc(id)}" data-f="autor_display" value="${esc(t.autor_display)}"></div>`,
+      foot:`<button type="button" class="btn green sm" data-act="done">Listo</button><button type="button" class="btn ghost sm" data-act="del">Quitar de la web</button>`,
+      sync(w){
+        const p=picked.find(x=>x.id===id); if(!p){ closeWin(w); return; }
+        w.el.querySelectorAll('[data-f]').forEach(i=>{ if(i!==document.activeElement) i.value=p[i.dataset.f]; });
+      },
+      input(e){ const f=e.target.dataset.f, p=picked.find(x=>x.id===id); if(p&&f){ p[f]=e.target.value; renderPicks(); } },
+      act(name,w){ if(name==='done') closeWin(w); else if(name==='del') togglePick(id); }
+    });
+  }
+
+  // ---- opiniones de la semana (carrusel de la portada) ----
+  function defaultAutor(r){ return r.tipo==='Propuesta'?'Vecino de La Aurora': r.tipo==='Queja o problema'?'Residente':'Vecino de La Aurora'; }
+  function isPicked(id){ return picked.some(p=>p.id===String(id)); }
+  function fromRow(r){ return { id:String(r.id), tipo:r.tipo, tema:r.tema, sector:r.sector||'', texto:r.detalle, autor_display:defaultAutor(r) }; }
+  function countBy(list){ const byCat={}, bySec={}; list.forEach(r=>{ byCat[r.tema]=(byCat[r.tema]||0)+1; if(r.sector) bySec[r.sector]=(bySec[r.sector]||0)+1; }); return { byCat, bySec }; }
+  function togglePick(id){
+    id=String(id);
+    if(isPicked(id)) picked=picked.filter(p=>p.id!==id);
+    else {
+      if(picked.length>=MAX_PICK){ toast('Máximo 5 opiniones por semana.',false); return false; }
+      const r=rows.find(x=>String(x.id)===id); if(r) picked.push(fromRow(r));
+    }
+    render(); renderPicks(); return true;
+  }
+
+  // marcar / desmarcar ★ en la hoja
+  $('#tbody').addEventListener('change',e=>{
+    const cb=e.target.closest('input[data-pick]'); if(!cb) return;
+    if(!togglePick(cb.dataset.pick)) cb.checked=false;
+  });
+
+  function renderPicks(){
+    const n=picked.length;
+    $('#pickCount').textContent=`${n}/${MAX_PICK}`; $('#pickCount').classList.toggle('full', n===MAX_PICK);
+    $('#publishBtn').disabled=!n;
+    $('#publishBtn').textContent = n ? `Publicar ${n} en la web` : 'Publicar en la web';
+    $('#topList').innerHTML = n ? `<div class="tablebox compact"><table class="xl xl-pick">
+      <colgroup><col style="width:150px"><col><col style="width:230px"><col style="width:200px"><col style="width:150px"><col style="width:230px"></colgroup>
+      <thead><tr><th>Orden</th><th>Texto público</th><th>Etiqueta pública</th><th>Tema</th><th>Sector</th><th></th></tr></thead>
+      <tbody>${picked.map((t,i)=>`<tr data-id="${esc(t.id)}">
+        <td><span class="ord">${i+1}</span><button type="button" class="mv" data-mv="-1" ${i===0?'disabled':''} aria-label="Subir">↑</button><button type="button" class="mv" data-mv="1" ${i===n-1?'disabled':''} aria-label="Bajar">↓</button></td>
+        <td class="detalle" title="Doble clic para leer y editar"><div class="dt"><span>${esc(t.texto)}</span></div></td>
+        <td><input class="cell" data-f="autor_display" value="${esc(t.autor_display)}" title="Etiqueta pública" aria-label="Etiqueta pública"></td>
+        <td title="${esc(t.tema)}">${esc(t.tema)}</td>
+        <td>${esc(t.sector)||dash}</td>
+        <td><div class="c-act"><button type="button" class="btn ghost sm" data-edit>Leer y editar</button><button type="button" class="btn ghost sm" data-del>Quitar</button></div></td>
+      </tr>`).join('')}</tbody></table></div>`
+      : '<p class="empty">Aún no elegiste opiniones. Márcalas con ★ en la hoja de arriba o usa “Sugerir por frecuencia”.</p>';
+    syncWins();
+  }
+  // la etiqueta se guarda al escribir (no se pierde al marcar otra ★)
+  $('#topList').addEventListener('input',e=>{
+    const f=e.target.dataset.f; if(!f) return;
+    const p=picked.find(x=>x.id===e.target.closest('tr').dataset.id); if(p){ p[f]=e.target.value; syncWins(); }
+  });
+  $('#topList').addEventListener('click',e=>{
+    const tr=e.target.closest('tr[data-id]'); if(!tr) return; const id=tr.dataset.id;
+    if(e.target.closest('[data-del]')){ togglePick(id); return; }
+    if(e.target.closest('[data-edit]')){ openPickEditor(id); return; }
+    const mv=e.target.closest('[data-mv]');
+    if(mv){ const i=picked.findIndex(p=>p.id===id), j=i+(+mv.dataset.mv); if(i>=0&&j>=0&&j<picked.length){ [picked[i],picked[j]]=[picked[j],picked[i]]; renderPicks(); } }
+  });
+  $('#topList').addEventListener('dblclick',e=>{
+    if(e.target.closest('input,button')) return;
+    const tr=e.target.closest('tr[data-id]'); if(!tr) return;
+    window.getSelection&&window.getSelection().removeAllRanges();
+    openPickEditor(tr.dataset.id);
+  });
+  $('#clearPicksBtn').addEventListener('click',()=>{ picked=[]; render(); renderPicks(); });
+
+  // sugerencia por frecuencia: completa los espacios libres (1 por tema, la más detallada)
   $('#genBtn').addEventListener('click',()=>{
     const list=filtered();
     if(!list.length){ toast('No hay opiniones en el rango.',false); return; }
-    const byCat={}, bySec={};
-    list.forEach(r=>{ byCat[r.tema]=(byCat[r.tema]||0)+1; if(r.sector) bySec[r.sector]=(bySec[r.sector]||0)+1; });
-    const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
+    const cats=Object.entries(countBy(list).byCat).sort((a,b)=>b[1]-a[1]);
     $('#catCounts').innerHTML = cats.slice(0,8).map(([k,v])=>`<div class="stat"><div class="n">${v}</div><div class="l">${esc(k)}</div></div>`).join('');
-
-    // top por frecuencia: por categoría más fuerte, el detalle más sustancial
-    generatedTop=[];
-    const seen=new Set();
+    show($('#catCounts'));
+    const seen=new Set(picked.map(p=>p.texto.slice(0,40).toLowerCase()));
     for(const [cat] of cats){
-      const cand = list.filter(r=>r.tema===cat && r.detalle && r.detalle.length>=20)
+      if(picked.length>=MAX_PICK) break;
+      if(picked.some(p=>p.tema===cat)) continue;
+      const cand = list.filter(r=>r.tema===cat && r.detalle && r.detalle.length>=20 && !isPicked(r.id))
                        .sort((a,b)=>b.detalle.length-a.detalle.length);
-      for(const r of cand){ const key=r.detalle.slice(0,40).toLowerCase(); if(seen.has(key)) continue; seen.add(key);
-        generatedTop.push({ tipo:r.tipo, tema:r.tema, sector:r.sector||'', texto:r.detalle, autor_display: defaultAutor(r) });
-        break;
-      }
-      if(generatedTop.length>=10) break;
+      for(const r of cand){ const key=r.detalle.slice(0,40).toLowerCase(); if(seen.has(key)) continue; seen.add(key); picked.push(fromRow(r)); break; }
     }
-    renderTop();
-    show($('#reportOut')); show($('#publishBtn'));
+    render(); renderPicks();
+    if(!picked.length) toast('Sin candidatos (se necesitan detalles de 20+ caracteres).',false);
   });
-  function defaultAutor(r){ return r.tipo==='Propuesta'?'Vecino de La Aurora': r.tipo==='Queja o problema'?'Residente':'Vecino de La Aurora'; }
 
-  function renderTop(){
-    $('#topList').innerHTML = generatedTop.map((t,i)=>`<div class="top-row" data-i="${i}">
-      <input type="number" value="${i+1}" min="1" data-f="rank" title="Orden">
-      <div><textarea data-f="texto">${esc(t.texto)}</textarea><div class="muted" style="font-size:12px;margin-top:4px">${esc(t.tipo)} · ${esc(t.tema)}${t.sector?' · '+esc(t.sector):''}</div></div>
-      <input data-f="autor_display" value="${esc(t.autor_display)}" title="Etiqueta pública">
-      <button class="btn ghost" data-del>Quitar</button>
-    </div>`).join('') || '<p class="muted">Sin candidatos (se necesitan detalles de 20+ caracteres).</p>';
-  }
-  $('#topList').addEventListener('click',e=>{ const del=e.target.closest('[data-del]'); if(!del) return; const i=+del.closest('.top-row').dataset.i; generatedTop.splice(i,1); renderTop(); });
-
+  // el orden de la lista es el orden en el carrusel
   function collectTop(){
-    const out=[];
-    document.querySelectorAll('#topList .top-row').forEach(row=>{
-      const i=+row.dataset.i; const base=generatedTop[i];
-      out.push({ ...base,
-        rank: +row.querySelector('[data-f=rank]').value||(i+1),
-        texto: row.querySelector('[data-f=texto]').value.trim(),
-        autor_display: row.querySelector('[data-f=autor_display]').value.trim()||'Vecino de La Aurora'
-      });
-    });
-    return out.filter(t=>t.texto).sort((a,b)=>a.rank-b.rank).map((t,idx)=>({...t,rank:idx+1}));
+    return picked.map(t=>({ ...t, texto:(t.texto||'').trim(), autor_display:(t.autor_display||'').trim()||'Vecino de La Aurora' }))
+                 .filter(t=>t.texto).slice(0,MAX_PICK).map((t,idx)=>({...t,rank:idx+1}));
+  }
+
+  // lo que se ve hoy en la portada
+  function fmtDay(d){ try{ return new Date(d+'T00:00:00').toLocaleDateString('es-EC',{day:'numeric',month:'short'}); }catch{ return d||''; } }
+  async function loadLive(){
+    const box=$('#liveNow');
+    const { data:rep, error } = await db.from('weekly_reports').select('id,week_start,week_end').order('created_at',{ascending:false}).limit(1);
+    if(error){ box.textContent='No se pudo consultar lo publicado.'; return; }
+    if(!rep||!rep.length){ box.innerHTML='En la portada ahora: <b>opiniones de ejemplo</b> (aún no se ha publicado ninguna semana).'; return; }
+    const { data:items } = await db.from('featured_opinions').select('rank,texto,autor_display').eq('report_id',rep[0].id).order('rank').limit(MAX_PICK);
+    const cut=s=>s.length>110?s.slice(0,110)+'…':s;
+    box.innerHTML=`En la portada ahora · semana del ${esc(fmtDay(rep[0].week_start))} al ${esc(fmtDay(rep[0].week_end))}:`+
+      (items&&items.length ? `<ol>${items.map(i=>`<li>${esc(cut(i.texto))} <span class="muted">— ${esc(i.autor_display)}</span></li>`).join('')}</ol>` : ' <b>sin opiniones</b>.');
   }
 
   // ---- publicar ----
   $('#publishBtn').addEventListener('click', async ()=>{
     const top=collectTop();
-    if(!top.length){ toast('El top está vacío.',false); return; }
-    const list=filtered();
-    const byCat={}, bySec={};
-    list.forEach(r=>{ byCat[r.tema]=(byCat[r.tema]||0)+1; if(r.sector) bySec[r.sector]=(bySec[r.sector]||0)+1; });
+    if(!top.length){ toast('Elige al menos una opinión.',false); return; }
+    const aviso=(top.length<MAX_PICK?`Elegiste ${top.length} de ${MAX_PICK}. `:'')+'Reemplazarán a las opiniones que hoy se ven en la portada. ¿Publicar?';
+    if(!confirm(aviso)) return;
+    const list=filtered(); const { byCat, bySec }=countBy(list);
     $('#publishBtn').disabled=true;
     const { data:rep, error:e1 } = await db.from('weekly_reports').insert({
       week_start: $('#fFrom').value, week_end: $('#fTo').value,
@@ -349,9 +746,13 @@
     if(e1){ $('#publishBtn').disabled=false; toast('Error al crear informe: '+e1.message,false); return; }
     const feats = top.map(t=>({ report_id: rep.id, rank:t.rank, tipo:t.tipo, tema:t.tema, sector:t.sector||null, texto:t.texto, autor_display:t.autor_display }));
     const { error:e2 } = await db.from('featured_opinions').insert(feats);
-    $('#publishBtn').disabled=false;
-    if(e2){ toast('Error al publicar top: '+e2.message,false); return; }
-    toast('✅ Informe publicado. El top ya se ve en la web.');
+    if(e2){
+      // sin destacadas, la portada quedaría vacía: se deshace el informe recién creado
+      await db.from('weekly_reports').delete().eq('id', rep.id);
+      $('#publishBtn').disabled=false; toast('Error al publicar: '+e2.message,false); return;
+    }
+    picked=[]; render(); renderPicks(); loadLive();
+    toast('Publicado. El carrusel de la portada ya muestra las opiniones de esta semana.');
   });
 
   // ---- purga ----
@@ -361,13 +762,15 @@
     const from=$('#fFrom').value+'T00:00:00', to=$('#fTo').value+'T23:59:59';
     $('#purgeBtn').disabled=true;
     // borrar fotos del rango
-    const { data:toDel } = await db.from('submissions').select('evidencia_path').gte('created_at',from).lte('created_at',to).not('evidencia_path','is',null);
+    // las opiniones "en gestión" no se tocan (si la migración 0003 ya está aplicada)
+    const ret=hasRet(), noGest=q=>ret?q.eq('en_gestion',false):q;
+    const { data:toDel } = await noGest(db.from('submissions').select('evidencia_path').gte('created_at',from).lte('created_at',to).not('evidencia_path','is',null));
     const paths=(toDel||[]).map(r=>r.evidencia_path).filter(Boolean);
     if(paths.length){ await db.storage.from('evidencias').remove(paths); }
-    const { error } = await db.from('submissions').delete().gte('created_at',from).lte('created_at',to);
+    const { error } = await noGest(db.from('submissions').delete().gte('created_at',from).lte('created_at',to));
     if(error){ $('#purgeBtn').disabled=false; toast('Error al limpiar: '+error.message,false); return; }
-    $('#confirmText').value=''; toast('🧹 Limpieza hecha. Informes y top conservados.');
-    loadRows();
+    $('#confirmText').value=''; toast('Limpieza hecha. Informes, top y opiniones en gestión conservados.');
+    loadRows(); loadRetention();
   });
 
   boot();

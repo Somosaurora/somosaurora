@@ -18,4 +18,4 @@ Profundidad posterior: `loanix-marketing-core`.
 - El **top semanal** de opiniones alimenta un **reel** para que la comunidad se sienta escuchada. El sitio muestra ese top en vivo.
 
 ## Tono
-Cálido, directo, esperanzador, apolítico en la forma (enfocado en el barrio y sus necesidades).
+Cálido, directo, esperanzador, apolítico en la forma (enfocado en la comunidad y sus necesidades).

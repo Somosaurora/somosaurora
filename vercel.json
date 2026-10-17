@@ -1,18 +1,148 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/purge",
+      "schedule": "0 7 * * *"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/avisos-legales",
+      "destination": "/politica-datos.html",
+      "permanent": true
+    },
+    {
+      "source": "/avisos-legales.html",
+      "destination": "/politica-datos.html",
+      "permanent": true
+    },
+    {
+      "source": "/((?!api/blocked$|api/purge$).*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(FirecrawlAgent|[Ff]irecrawl|GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-Web|anthropic-ai|CCBot|PerplexityBot|Perplexity-User|Bytespider|Amazonbot|Diffbot|ImagesiftBot|Omgilibot|cohere-ai|Meta-ExternalAgent|meta-externalagent|Timpibot|DataForSeoBot|PetalBot|Scrapy|HTTrack|python-requests|python-urllib|Go-http-client|libwww-perl|aiohttp|httpx|node-fetch|axios|okhttp|HeadlessChrome|PhantomJS|Apache-HttpClient|Java/|curl/|Wget).*"
+        }
+      ],
+      "destination": "/api/blocked",
+      "permanent": false
+    },
+    {
+      "source": "/((?!api/blocked$|api/purge$).*)",
+      "missing": [
+        {
+          "type": "header",
+          "key": "user-agent"
+        }
+      ],
+      "destination": "/api/blocked",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noai, noimageai"
+        }
+      ]
+    },
+    {
+      "source": "/(og-image\\.png|favicon\\.ico|icons/.*)",
+      "headers": [
+        {
+          "key": "Cross-Origin-Resource-Policy",
+          "value": "cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/((?!admin(?:/|$)).*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-WjYFQRzxeUaQrtATE7Gx1hzqFsoEsCNRPQQsQRi57sQ=' 'sha256-Zvf0YtsLJwZVEfsW+eGC8IvbxSmLWV3+Gf0bz35b6AY=' 'sha256-vxyW5k5bjc+dE7z4KRFzpqs2gTAr6xN8pEB1X6btQRQ='; img-src 'self' data:; connect-src 'self'"
+        }
       ]
     },
     {
       "source": "/admin/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; script-src 'self' 'sha256-stKc41dnfMBjDHqDYrXg9Fh2alGL2ftBFPYqaFt4hh4=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js; img-src 'self' data: https://jdterctcniotbipgwcdv.supabase.co; connect-src 'self' https://jdterctcniotbipgwcdv.supabase.co"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/admin",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; script-src 'self' 'sha256-stKc41dnfMBjDHqDYrXg9Fh2alGL2ftBFPYqaFt4hh4=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js; img-src 'self' data: https://jdterctcniotbipgwcdv.supabase.co; connect-src 'self' https://jdterctcniotbipgwcdv.supabase.co"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
     }
   ]
 }
