@@ -7,3 +7,9 @@
 /marketing/
 /scripts/
 /tests/
+
+# JUMP está cerrado al público («sitio en construcción»: vercel.json manda /jump a /en-construccion/).
+# Mientras tanto no se publican sus API abiertas a cualquiera: postulaciones y votos.
+# Para abrirlo de nuevo: borrar estas líneas y las dos redirecciones a /en-construccion/ de vercel.json.
+/api/jump-postular.js
+/api/jump-publico.js

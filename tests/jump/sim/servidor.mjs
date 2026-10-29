@@ -363,7 +363,9 @@ export async function iniciarSim({ puerto = 0, raiz = RAIZ_REPO, db = null } = {
 
   // ---------- sitio y API ----------
   const vj = JSON.parse(readFileSync(join(raiz, "vercel.json"), "utf8"));
-  const RUTAS = getTransformedRoutes({ redirects: vj.redirects, headers: vj.headers }).routes;
+  // JUMP está cerrado al público (vercel.json lo manda a /en-construccion/); las pruebas lo siguen viendo abierto.
+  const redirects = vj.redirects.filter((r) => r.destination !== "/en-construccion/");
+  const RUTAS = getTransformedRoutes({ redirects, headers: vj.headers }).routes;
   const handlers = {};
   const handler = async (nombre) => {
     if (!(nombre in handlers)) {

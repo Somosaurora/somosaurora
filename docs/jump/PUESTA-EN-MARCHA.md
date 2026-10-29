@@ -7,6 +7,14 @@ Son diez pasos, en este orden. Los pasos 1 a 5 dejan la plataforma lista para en
 
 JUMP tiene su **propio proyecto de Supabase**, separado del de La Aurora Escucha. No comparten base de datos, cuentas ni llaves. Nada de lo que hagas aquí toca La Aurora.
 
+> **Ahora mismo JUMP está cerrado al público.** Quien entra a `/jump/` o a `/jump/comunidad/` ve «Sitio en construcción» (`/en-construccion/`), y no se reciben postulaciones ni votos. Para abrirlo de nuevo, en un cambio aparte:
+> 1. borrar de `vercel.json` las dos redirecciones a `/en-construccion/`;
+> 2. borrar de `.vercelignore` el bloque de JUMP (`/api/jump-postular.js` y `/api/jump-publico.js`);
+> 3. borrar `tests/jump/cerrado.test.mjs` (comprueba que JUMP sigue cerrado).
+>
+> La base de datos, las cuentas y las variables de Vercel no se tocan: al abrir, todo sigue como estaba.
+> Mientras está cerrado tampoco corre el borrado de las huellas del voto público (lo dispara cada visita a la página); con la primera visita después de abrir se borran todas las que ya cumplieron sus 30 días.
+
 ---
 
 ## 1. Crear el proyecto de Supabase de JUMP

@@ -22,6 +22,16 @@
       "permanent": true
     },
     {
+      "source": "/jump",
+      "destination": "/en-construccion/",
+      "permanent": false
+    },
+    {
+      "source": "/jump/(.*)",
+      "destination": "/en-construccion/",
+      "permanent": false
+    },
+    {
       "source": "/((?!api/blocked$|api/purge$|api/jump-zoom-deauth$).*)",
       "has": [
         {

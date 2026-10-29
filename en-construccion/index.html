@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JUMP · Sitio en construcción</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFCF5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+/* Mientras JUMP está cerrado, vercel.json manda aquí /jump y todo lo que cuelga de ella.
+   Nada de esta página puede venir de /jump/ (redirigiría aquí mismo): estilos en línea y sin imágenes. */
+:root{
+  --navy:#0B1F5C; --sun:#FFC21A; --sun-deep:#E59A00;
+  --paper:#FFFCF5; --ink:#0B1640; --ink-2:#4A5378;
+  --display:"Archivo",ui-sans-serif,system-ui,sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr auto;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--display);-webkit-font-smoothing:antialiased}
+.cinta{height:14px;background:repeating-linear-gradient(-45deg,var(--sun) 0 18px,var(--ink) 18px 36px)}
+main{display:grid;place-items:center;padding:clamp(48px,9vw,112px) 16px}
+.caja{width:min(100%,560px)}
+.marca{display:inline-block;margin-bottom:28px;padding:2px 12px;border-radius:8px;background:var(--sun);font-weight:900;font-stretch:125%;font-size:22px;letter-spacing:.06em}
+h1{margin:0;font-weight:800;font-stretch:112%;font-size:clamp(40px,8vw,68px);line-height:1.02;letter-spacing:-.03em;text-wrap:balance}
+p{margin:20px 0 0;max-width:40ch;font-size:clamp(17px,2.2vw,19px);color:var(--ink-2);text-wrap:pretty}
+.boton{display:inline-flex;align-items:center;gap:10px;margin-top:36px;padding:14px 24px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;text-decoration:none;transition:transform 160ms var(--ease-out),background-color 160ms ease}
+.boton:active{transform:scale(.97)}
+.boton:focus-visible{outline:3px solid var(--sun-deep);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){.boton:hover{background:var(--navy)}}
+@media (prefers-reduced-motion:reduce){.boton{transition:background-color 160ms ease}.boton:active{transform:none}}
+footer{padding:20px 16px 28px;text-align:center;font-size:14px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div class="cinta" aria-hidden="true"></div>
+<main>
+  <div class="caja">
+    <div class="marca">JUMP</div>
+    <h1>Sitio en construcción</h1>
+    <p>Estamos preparando la página de JUMP. Vuelve pronto.</p>
+    <a class="boton" href="/">Ir a Somos Aurora <span aria-hidden="true">→</span></a>
+  </div>
+</main>
+<footer>Somos Aurora</footer>
+</body>
+</html>
